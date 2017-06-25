@@ -8,10 +8,10 @@
        
        <hr>
        
-       <button class='btn btn-lg btn-primary btn-black m-b-15 @click=register'>Register</button>
+       <button class='btn btn-lg btn-primary btn-black m-b-15' v-on:click='register'>Register</button>
        <!-- @click is short for v-on:click -->
        <p class='text-center'>
-           Already have an account? <router-link to ='/auth/login'>Login!</router-link>
+           Already have an account? <router-link to='/auth/login'>Login!</router-link>
        </p>
    </div>
 </template>
@@ -30,7 +30,11 @@
       },
       methods: {
         register: function () {
-          console.log(this.user)
+          this.$http.post('http://localhost:9090/users', this.user)
+            .then(function (res) {
+            })
+            .catch(function (res) {
+            })
         }
       }
     }
